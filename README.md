@@ -33,6 +33,11 @@ TODO /etc/shibboleth/shibboleth.xml
 
 
 ### Setup Apache
+Turn on UseCanonicalName in /etc/httpd/conf/httpd.conf
+```
+UseCanonicalName On
+```
+
 Copy elrestart.conf into apache conf.d directory.
 ```
 cd <this repo directory>
