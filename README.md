@@ -57,6 +57,7 @@ service httpd restart && service shibd restart
 ```
 
 ### Setup cron job
+As root (since that user has permissions to restart the service) add a cron job.
 ```
 crontab -e
 ```
