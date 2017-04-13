@@ -58,6 +58,10 @@ service httpd restart && service shibd restart
 
 ### Setup cron job
 ```
+crontab -e
+```
+Example that runs every 5 minutes:
+```
 */5 * * * * <this repo directory>/check_restart.sh
 ```
 
