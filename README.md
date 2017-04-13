@@ -3,6 +3,7 @@ Elucidator Restart Service
 
 ## Installation
 Assumes apache is already setup and running on CentOS and will be secured by Duke Shiboleth/Group Manager.
+Apache should have https setup. 
 
 ### Install Shiboleth
 Create /etc/yum.repos.d/duke-el-shib2.repo with the following content:
@@ -27,9 +28,15 @@ Download duke shiboleth config files.
 cd /etc/shiboleth
 wget https://shib.oit.duke.edu/duke-metadata-2-signed.xml
 wget https://shib.oit.duke.edu/idp_signing.crt
+cp <this repo directory>/etc/shibboleth/shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 ```
 
-TODO /etc/shibboleth/shibboleth.xml
+Generate certs.
+```
+cd /etc/shiboleth
+keygen.sh
+```
+Update SP with value from sp-cert.pem
 
 
 ### Setup Apache
@@ -48,3 +55,14 @@ cp etc/httpd/conf.d/elrestart.conf /etc/httpd/conf.d/elrestart.conf
 ```
 service httpd restart && service shibd restart
 ```
+
+### Setup cron job
+As root (since that user has permissions to restart the service) add a cron job.
+```
+crontab -e
+```
+Example that runs every 5 minutes:
+```
+*/5 * * * * <this repo directory>/check_restart.sh
+```
+
