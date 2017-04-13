@@ -2,7 +2,7 @@
 Elucidator Restart Service
 
 ## Installation
-Assumes apache is already setup and running on CentOS.
+Assumes apache is already setup and running on CentOS and will be secured by Duke Shiboleth/Group Manager.
 
 ### Install Shiboleth
 Create /etc/yum.repos.d/duke-el-shib2.repo with the following content:
@@ -22,10 +22,22 @@ yum install shibboleth.x86_64
 ```
 
 ### Setup Shiboleth
-TODO
+Download duke shiboleth config files.
+```
+cd /etc/shiboleth
+wget https://shib.oit.duke.edu/duke-metadata-2-signed.xml
+wget https://shib.oit.duke.edu/idp_signing.crt
+```
+
+TODO /etc/shibboleth/shibboleth.xml
+
 
 ### Setup Apache
-TODO
+Copy elrestart.conf into apache conf.d directory.
+```
+cd <this repo directory>
+cp etc/httpd/conf.d/elrestart.conf /etc/httpd/conf.d/elrestart.conf
+```
 
 ### Restart Services
 ```
