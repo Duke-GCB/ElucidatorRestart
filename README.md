@@ -3,6 +3,7 @@ Elucidator Restart Service
 
 ## Installation
 Assumes apache is already setup and running on CentOS and will be secured by Duke Shiboleth/Group Manager.
+Apache should have https setup. 
 
 ### Install Shiboleth
 Create /etc/yum.repos.d/duke-el-shib2.repo with the following content:
