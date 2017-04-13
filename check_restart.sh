@@ -10,6 +10,10 @@ if [ -e $RESTARTFILE ]
 then
     echo "Restarting"
     rm -f $RESTARTFILE
-    #TODO ACTUALLY RESTART SOMETHING
+
+    # Stop and start elucidator
+    service rii stop
+    service rii start
+
     echo "Restarted service $SERVICENAME at `date`" >> $RESTARTLOG
 fi
