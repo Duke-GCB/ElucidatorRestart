@@ -28,9 +28,15 @@ Download duke shiboleth config files.
 cd /etc/shiboleth
 wget https://shib.oit.duke.edu/duke-metadata-2-signed.xml
 wget https://shib.oit.duke.edu/idp_signing.crt
+cp <this repo directory>/etc/shibboleth/shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 ```
 
-TODO /etc/shibboleth/shibboleth.xml
+Generate certs.
+```
+cd /etc/shiboleth
+keygen.sh
+```
+Update SP with value from sp-cert.pem
 
 
 ### Setup Apache
