@@ -55,3 +55,9 @@ cp etc/httpd/conf.d/elrestart.conf /etc/httpd/conf.d/elrestart.conf
 ```
 service httpd restart && service shibd restart
 ```
+
+### Setup cron job
+```
+*/5 * * * * <this repo directory>/check_restart.sh
+```
+
