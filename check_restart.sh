@@ -4,8 +4,6 @@
 RESTARTFILE=/tmp/restart_elucidator.txt
 RESTARTLOG=/restart_service/restart.log
 
-SERVICENAME=httpd
-
 if [ -e $RESTARTFILE ]
 then
     echo "Restarting"
@@ -15,5 +13,5 @@ then
     service rii stop
     service rii start
 
-    echo "Restarted service $SERVICENAME at `date`" >> $RESTARTLOG
+    echo "Restarted service elucidator at `date`" >> $RESTARTLOG
 fi
