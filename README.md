@@ -2,7 +2,7 @@
 Elucidator Restart Service
 
 ![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/FirstScreen.png "First Screen")
-__User Clicks "Submit Restart Request" ^^^
+__User Clicks "Submit Restart Request" ^^^__
 ![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/SecondScreen.png "Second Screen")
 
 
