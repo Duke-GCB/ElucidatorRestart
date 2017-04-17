@@ -1,6 +1,10 @@
 # ElucidatorRestart
 Elucidator Restart Service
 
+![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/FirstScreen.png "First Screen")
+![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/SecomdScreen.png "Second Screen")
+
+
 ## Installation
 Assumes apache is already setup and running on CentOS and will be secured by Duke Shiboleth/Group Manager.
 Apache should have https setup. 
