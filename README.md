@@ -5,6 +5,7 @@ Elucidator Restart Service
 __User Clicks "Submit Restart Request"__
 ![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/SecondScreen.png "Second Screen")
 
+This screen will display __Restart already scheduled.__ if a user has already requested a restart that hasn't completed yet.
 
 ## Installation
 Assumes apache is already setup and running on CentOS and will be secured by Duke Shiboleth/Group Manager.
