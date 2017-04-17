@@ -2,7 +2,7 @@
 Elucidator Restart Service
 
 ![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/FirstScreen.png "First Screen")
-![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/SecomdScreen.png "Second Screen")
+![alt text](https://github.com/Duke-GCB/ElucidatorRestart/raw/master/docs/SecondScreen.png "Second Screen")
 
 
 ## Installation
