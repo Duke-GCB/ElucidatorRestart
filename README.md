@@ -10,11 +10,16 @@ Create /etc/yum.repos.d/duke-el-shib2.repo with the following content:
 ```
 [duke-el-shib2]
 name=Shibboleth2
-baseurl=http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/
+baseurl=http://download.opensuse.org/repositories/security://shibboleth/CentOS_5/
 enabled=1
 gpgcheck=0
 priority=1
 ```
+For CentOS 6 use this URL:
+```
+baseurl=http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/
+```
+
 Change the baseurl for the particular version we will use.
 
 Install package:
