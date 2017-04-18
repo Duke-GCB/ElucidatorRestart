@@ -25,7 +25,6 @@ For CentOS 6 use this URL:
 ```
 baseurl=http://download.opensuse.org/repositories/security://shibboleth/CentOS_CentOS-6/
 ```
-
 Change the baseurl for the particular version we will use.
 
 Install package:
@@ -60,12 +59,38 @@ Copy elrestart.conf into apache conf.d directory.
 ```
 cd <this repo directory>
 cp etc/httpd/conf.d/elrestart.conf /etc/httpd/conf.d/elrestart.conf
+
+```
+
+Copy CGI script into apache cgi-bin directory
+```
+cd <this repo directory>
+cp var/www/cgi-bin/elucidator-restart.sh /var/www/cgi-bin/elucidator-restart.sh
 ```
 
 ### Restart Services
 ```
 service httpd restart && service shibd restart
 ```
+
+### Setup data directory structure
+Directory Structure
+```
+elrestart/
+  restart.log  # owned by apache and written to by apache and root(cron job)
+  watched/  # directory owned by apache
+    restart_elucidator.txt # flag file - created by apache and deleted by root(cron job)
+   
+```
+Create directories
+```
+# create base directory that will hold the restart.log
+mkdir /elrestart
+# create apache owned subdirectory that will hold the restart_elucidator.txt flag file
+# This directory will be apache owned.  
+mkdir /elrestart/watched/
+```
+
 
 ### Setup cron job
 As root (since that user has permissions to restart the service) add a cron job.
