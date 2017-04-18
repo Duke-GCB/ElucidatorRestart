@@ -2,8 +2,8 @@
 # CGI script to create $RESTARTFILE when user POSTS
 # Cron job will find $RESTARTFILE file then restart the service/update $RESTARTLOG
 
-RESTARTFILE=/tmp/restart_elucidator.txt
-RESTARTLOG=/restart_service/restart.log
+RESTARTFILE=/elrestart/watched/restart_elucidator.txt
+RESTARTLOG=/elrestart/restart.log
 
 function ContentType {
     echo "Content-type: text/html

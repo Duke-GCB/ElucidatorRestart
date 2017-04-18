@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # If $RESTARTFILE exists restart elucidator service and log to $RESTARTLOG
 
-RESTARTFILE=/tmp/restart_elucidator.txt
-RESTARTLOG=/restart_service/restart.log
+RESTARTFILE=/elrestart/watched/restart_elucidator.txt
+RESTARTLOG=/elrestart/restart.log
 
 if [ -e $RESTARTFILE ]
 then
