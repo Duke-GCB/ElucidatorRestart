@@ -32,14 +32,14 @@ external/
 Run this command to start the server:
 ```
 PWD=$(pwd)
-docker run -p 443:443 -p 80:80 -e ELUCIDATOR_HOST=<user@targethost> -v \ 
-    $PWD/external:/etc/external -v $PWD/external/ssh:/usr/share/httpd/.ssh \
+docker run -p 443:443 -p 80:80 -e ELUCIDATOR_HOST=<user@targethost> \
+    -v $PWD/external:/etc/external -v $PWD/external/ssh:/usr/share/httpd/.ssh \
     quay.io/dukegcb/elucidator-restart
 ```
 
 ### Setup for target machine
 - Setup a user to be used when connecting.
-- Add targetserver/authorized_keys to this users's .ssh directory.
+- Add targetserver/authorized_keys to this users's .ssh directory (after filling in TODO).
 - Create /opt/elrestart/ directory with appropriate permissions.
 - Put targetserver/elrestart.sh in /opt/elrestart/ this is the ssh forced command that is run by the docker webserver.
 - As root (since that user has permissions to restart the service) add a cron job.
