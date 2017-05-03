@@ -1,0 +1,6 @@
+[duke-el-shib2]
+name=Shibboleth2
+baseurl=http://download.opensuse.org/repositories/security://shibboleth/CentOS_7/
+enabled=1
+gpgcheck=0
+priority=1

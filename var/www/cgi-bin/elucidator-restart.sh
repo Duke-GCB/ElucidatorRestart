@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-# CGI script to create $RESTARTFILE when user POSTS
-# Cron job will find $RESTARTFILE file then restart the service/update $RESTARTLOG
-
-RESTARTFILE=/elrestart/watched/restart_elucidator.txt
-RESTARTLOG=/elrestart/restart.log
+# CGI script to view restart log and request a restart
+# Assumes ELUCIDATOR_HOST has been set to the server we should ssh into
 
 function ContentType {
     echo "Content-type: text/html
@@ -36,7 +33,7 @@ function GetResponse {
     <section>
        <h1>Elucidator Restart Log</h1>
        <pre>"
-cat $RESTARTLOG
+ssh $ELUCIDATOR_HOST viewlog
 echo "
        </pre>
     </section>
@@ -53,15 +50,7 @@ echo "
 
 if [ "$REQUEST_METHOD" == "POST" ]
 then
-    MSG=""
-    if [ -e "$RESTARTFILE" ]
-    then
-        MSG="Restart already scheduled."
-    else
-        touch /tmp/restart_elucidator.txt
-        MSG="Requested restart."
-        echo "Restart requested by $REMOTE_USER at `date`" >> $RESTARTLOG
-    fi
+    MSG=$(ssh $ELUCIDATOR_HOST restart $REMOTE_USER)
     PostResponse
 else
     GetResponse
