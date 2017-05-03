@@ -32,8 +32,8 @@ external/
 Run this command to start the server:
 ```
 PWD=$(pwd)
-docker run -p 443:443 -p 80:80 -e ELUCIDATOR_HOST=<user@targethost> -v \ 
-    $PWD/external:/etc/external -v $PWD/external/ssh:/usr/share/httpd/.ssh \
+docker run -p 443:443 -p 80:80 -e ELUCIDATOR_HOST=<user@targethost>
+    -v $PWD/external:/etc/external -v $PWD/external/ssh:/usr/share/httpd/.ssh \
     quay.io/dukegcb/elucidator-restart
 ```
 
