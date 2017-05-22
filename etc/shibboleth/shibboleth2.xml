@@ -87,7 +87,7 @@
     points into to this section.
     -->
     <ApplicationDefaults id="default" policyId="default"
-        entityID="https://rosetta2.igsp.duke.edu"
+        entityID="https://elucidator-restart.gcb.duke.edu"
         REMOTE_USER="eppn persistent-id targeted-id"
         signing="false" encryption="false">
         <!-- note: check signing and encryption settings -->
