@@ -35,7 +35,7 @@ function GetResponse {
     <section>
        <h1>Elucidator Restart Log</h1>
        <pre>"
-ssh $ELUCIDATOR_HOST viewlog
+ssh -i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
 echo "
        </pre>
     </section>
