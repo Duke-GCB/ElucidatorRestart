@@ -2,6 +2,8 @@
 # CGI script to view restart log and request a restart
 # Assumes ELUCIDATOR_HOST has been set to the server we should ssh into
 
+PUB_KEY_PATH=/etc/external/ssh/id_rsa
+
 function ContentType {
     echo "Content-type: text/html
 
@@ -50,7 +52,7 @@ echo "
 
 if [ "$REQUEST_METHOD" == "POST" ]
 then
-    MSG=$(ssh $ELUCIDATOR_HOST restart $REMOTE_USER)
+    MSG=$(ssh -i $PUB_KEY_PATH $ELUCIDATOR_HOST restart $REMOTE_USER)
     PostResponse
 else
     GetResponse
