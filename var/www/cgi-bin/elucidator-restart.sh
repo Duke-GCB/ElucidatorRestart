@@ -3,6 +3,8 @@
 # Assumes ELUCIDATOR_HOST has been set to the server we should ssh into
 
 PUB_KEY_PATH=/etc/external/ssh/id_rsa
+KNOWN_HOSTS_PATH=/etc/external/ssh/known_hosts
+CONNECT_TIMEOUT_SEC=3
 
 function ContentType {
     echo "Content-type: text/html
@@ -35,7 +37,7 @@ function GetResponse {
     <section>
        <h1>Elucidator Restart Log</h1>
        <pre>"
-ssh -i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
+ssh -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -o UserKnownHostsFile=$KNOWN_HOSTS_PATH-i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
 echo "
        </pre>
     </section>
@@ -52,7 +54,7 @@ echo "
 
 if [ "$REQUEST_METHOD" == "POST" ]
 then
-    MSG=$(ssh -i $PUB_KEY_PATH $ELUCIDATOR_HOST restart $REMOTE_USER)
+    MSG=$(ssh -o UserKnownHostsFile=$KNOWN_HOSTS_PATH -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -i $PUB_KEY_PATH $ELUCIDATOR_HOST restart $REMOTE_USER)
     PostResponse
 else
     GetResponse
