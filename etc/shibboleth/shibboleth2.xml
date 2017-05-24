@@ -87,7 +87,7 @@
     points into to this section.
     -->
     <ApplicationDefaults id="default" policyId="default"
-        entityID="TODO_ENTITY_ID"
+        entityID="https://elucidator-restart.gcb.duke.edu"
         REMOTE_USER="eppn persistent-id targeted-id"
         signing="false" encryption="false">
         <!-- note: check signing and encryption settings -->
@@ -222,7 +222,9 @@
         <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
 
         <!-- Simple file-based resolver for using a single keypair. -->
-        <CredentialResolver type="File" key="sp-key.pem" certificate="sp-cert.pem"/>
+        <CredentialResolver type="File"
+                            key="/etc/external/shibboleth/sp-key.pem"
+                            certificate="/etc/external/shibboleth/sp-cert.pem"/>
 
         <!-- Example of a second application (using a second vhost) that has a different entityID. -->
         <!-- <ApplicationOverride id="admin" entityID="https://admin.example.org/shibboleth"/> -->

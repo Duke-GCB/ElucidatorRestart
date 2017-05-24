@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# CGI script to create $RESTARTFILE when user POSTS
-# Cron job will find $RESTARTFILE file then restart the service/update $RESTARTLOG
+# CGI script to view restart log and request a restart
+# Assumes ELUCIDATOR_HOST has been set to the server we should ssh into
 
-RESTARTFILE=/elrestart/watched/restart_elucidator.txt
-RESTARTLOG=/elrestart/restart.log
+PUB_KEY_PATH=/etc/external/ssh/id_rsa
+KNOWN_HOSTS_PATH=/etc/external/ssh/known_hosts
+CONNECT_TIMEOUT_SEC=3
 
 function ContentType {
     echo "Content-type: text/html
@@ -36,7 +37,11 @@ function GetResponse {
     <section>
        <h1>Elucidator Restart Log</h1>
        <pre>"
-cat $RESTARTLOG
+ssh -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -o UserKnownHostsFile=$KNOWN_HOSTS_PATH -i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
+if [ $? -ne 0 ]
+then
+  echo "Timeout connecting to server"
+fi
 echo "
        </pre>
     </section>
@@ -53,14 +58,10 @@ echo "
 
 if [ "$REQUEST_METHOD" == "POST" ]
 then
-    MSG=""
-    if [ -e "$RESTARTFILE" ]
+    MSG=$(ssh -o UserKnownHostsFile=$KNOWN_HOSTS_PATH -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -i $PUB_KEY_PATH $ELUCIDATOR_HOST restart $REMOTE_USER)
+    if [ $? -ne 0 ]
     then
-        MSG="Restart already scheduled."
-    else
-        touch /tmp/restart_elucidator.txt
-        MSG="Requested restart."
-        echo "Restart requested by $REMOTE_USER at `date`" >> $RESTARTLOG
+      MSG="Timeout connecting to server"
     fi
     PostResponse
 else
