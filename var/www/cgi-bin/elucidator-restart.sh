@@ -37,7 +37,7 @@ function GetResponse {
     <section>
        <h1>Elucidator Restart Log</h1>
        <pre>"
-ssh -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -o UserKnownHostsFile=$KNOWN_HOSTS_PATH-i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
+ssh -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -o UserKnownHostsFile=$KNOWN_HOSTS_PATH -i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
 echo "
        </pre>
     </section>
