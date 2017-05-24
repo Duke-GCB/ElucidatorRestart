@@ -38,6 +38,10 @@ function GetResponse {
        <h1>Elucidator Restart Log</h1>
        <pre>"
 ssh -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -o UserKnownHostsFile=$KNOWN_HOSTS_PATH -i $PUB_KEY_PATH $ELUCIDATOR_HOST viewlog
+if [ $? -ne 0 ]
+then
+  echo "Timeout connecting to server"
+fi
 echo "
        </pre>
     </section>
@@ -55,6 +59,10 @@ echo "
 if [ "$REQUEST_METHOD" == "POST" ]
 then
     MSG=$(ssh -o UserKnownHostsFile=$KNOWN_HOSTS_PATH -o ConnectTimeout=$CONNECT_TIMEOUT_SEC -i $PUB_KEY_PATH $ELUCIDATOR_HOST restart $REMOTE_USER)
+    if [ $? -ne 0 ]
+    then
+      MSG="Timeout connecting to server"
+    fi
     PostResponse
 else
     GetResponse
