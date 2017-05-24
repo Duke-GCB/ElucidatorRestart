@@ -33,4 +33,4 @@ ADD ./etc/shibboleth/attribute-map.xml /etc/shibboleth/attribute-map.xml
 RUN cd /etc/shibboleth/ && wget https://shib.oit.duke.edu/duke-metadata-2-signed.xml
 RUN cd /etc/shibboleth/ && wget https://shib.oit.duke.edu/idp_signing.crt
 
-CMD chown -R apache:apache /usr/share/httpd/.ssh && supervisord -c /etc/supervisord.conf -n
+CMD supervisord -c /etc/supervisord.conf -n
