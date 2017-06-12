@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Apache gets grumpy about PID files pre-existing
-if [ -e /var/run/apache2/apache2.pid ]; then
-  echo "Removing stale apache2.pid"
-  rm -f /var/run/apache2/apache2.pid
+if [ -e /var/run/httpd/httpd.pid ]; then
+  echo "Removing stale httpd.pid"
+  rm -f /var/run/httpd/httpd.pid
 fi
 
 # Run apache in foreground
