@@ -18,6 +18,8 @@ RUN pip install supervisor
 
 ADD supervisord.conf /etc/supervisord.conf
 
+ADD start-apache.sh /usr/bin/start-apache.sh
+
 # Setup apache config for restart endpoint
 ADD ./etc/httpd/conf.d/elrestart.conf /etc/httpd/conf.d/elrestart.conf
 ADD ./etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf
